@@ -1,0 +1,43 @@
+name: workflowfirst
+on: push
+
+jobs:
+  job1:
+    name: First-Job
+    runs-on: ubuntu-latest
+    steps:
+       - name: step1
+         uses: actions/checkout@v2
+       - name: step2
+         run: date "+%H:%M:%S   %d/%m/%y"
+
+  job2:
+    name: Second-Job
+    runs-on: windows-latest
+    steps:
+       - name: step1
+         uses: actions/checkout@v2
+       - name: step2
+         runs: echo %date:~-4%%date:~3,2%%date:~0,2%%time:~0,2%%time:~3,2%%time:~6,2%
+
+  job3:
+    name: third-Job
+    runs-on: macos-latest
+    steps:
+       - name: step1
+         uses: actions/checkout@v2
+       - name: step2
+         runs: date +%F
+  job4:
+     name: fourth-Job
+     runs-on: linux-latest
+     needs: [First-Job, Second-Job, third-Job]
+     steps:
+       - name: step1
+         uses: actions/checkout@v2
+       - name: step2
+         runs: now=$(date)
+
+
+
+
