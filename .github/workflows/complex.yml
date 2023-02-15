@@ -26,7 +26,7 @@ jobs:
        - name: step2
          run: date +%F
  fourth-name:
-     runs-on: linux-latest
+     runs-on: macos-latest
      needs: [First-Job, Second-Job, third-Job]
      steps:
        - name: step1
